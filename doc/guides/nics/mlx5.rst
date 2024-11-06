@@ -468,6 +468,11 @@ Limitations
   - The field type ``RTE_FLOW_FIELD_VALUE`` must be the base (``b``) field.
   - The field type ``RTE_FLOW_FIELD_RANDOM`` can only be compared with
     ``RTE_FLOW_FIELD_VALUE``.
+  - In switch mode, when the ``repr_matching_en`` flag is enabled in the devarg
+    (which is the default setting), the match with compare result item is not
+    supported for ``ingress`` rules. This is because an implicit REPRESENTED_PORT
+    needs to be added to the matcher, which conflicts with the single item
+    limitation for the match with compare result item.
 
 - No Tx metadata go to the E-Switch steering domain for the Flow group 0.
   The flows within group 0 and set metadata action are rejected by hardware.
